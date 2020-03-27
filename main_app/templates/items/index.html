@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.alloyui.com/3.0.1/aui/aui-min.js"></script>
+<link href="https://cdn.alloyui.com/3.0.1/aui-css/css/bootstrap.min.css" rel="stylesheet"></link>
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <title>Wish List</title>
+</head>
+<body style="text-align: center;margin: 2rem;">
+  <h1>Wish List Items</h1>
+  {% if items|length == 0 %}
+    <h3>No items Yet</h3>
+   {% else %}
+    {% for item in items %}
+  <table style="margin: 2rem auto;">
+      <th>Description</th><th>Delete</th>
+        <tr>
+            <td>description: {{ item.description }}</td><td><a href="{% url 'items_delete' item.id %}""><button class="btn-small btn-danger">x</button></a></td>
+        </tr>
+  </table>
+  <br>
+  {% endfor %}
+  {% endif %}
+  <hr>
+  <a href="{% url 'items_create' %}"><button class='pure-button'>Add a Wish item<button</a>
+</body>
+</html>
